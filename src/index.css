@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --color-primary: #C4005F;
+}
+@layer base {
+  html {
+    font-family: "Inter", sans-serif;
+  }
+
+  body {
+    @apply antialiased;
+  }
+
+  h1 {
+    @apply text-3xl font-bold;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold;
+  }
+}
+
+@layer components {
+  .btn-auth {
+    @apply w-full rounded-lg 
+    bg-[var(--color-primary)]
+    py-3 
+    font-semibold 
+    text-black
+    transition
+    hover:opacity-60
+    hover:cursor-pointer
+    focus:outline-none
+    focus:ring-2
+    focus:ring-[var(--color-primary)]
+    focus:ring-offset-2
+    focus:ring-offset-transparent;
+  }
+
+  .dark .btn-auth {
+    @apply text-black;
+  }
+
+  .input-auth{
+    @apply bg-white border-gray-50 rounded p-2 focus:border-gray-50  focus:outline-2 focus:outline-offset-2 focus:outline-[var(--color-primary)]
+  }
+}
