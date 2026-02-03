@@ -16,7 +16,7 @@ export default function Topbar({ onMenu }: { onMenu: () => void }) {
       h-16
       px-6
       flex items-center justify-between
-      bg-[#6571a1]
+      bg-[#050C28]/20
       dark:bg-[#050C28]
       backdrop-blur-xl
       m-2
@@ -27,9 +27,8 @@ export default function Topbar({ onMenu }: { onMenu: () => void }) {
         <Menu size={22} />
       </button>
       <span className="text-sm opacity-70">
-        {pathname === '/' ? 'Dashboard': pathname === '/report' ? 'Relatórios': pathname === '/create/report' ? 'Criar Relatórios': pathname === '/history' ? 'Histórico' : 'Minha conta'}
+        {pathname === '/' ? 'Dashboard': pathname === '/create/sale' ? 'Criar vendas': pathname === '/create/report' ? 'Criar Relatórios': 'Histórico'}
       </span>
-
 
       <button
         onClick={handleLogout}

@@ -1,0 +1,70 @@
+/* Fundo do balão */
+.driver-popover {
+  background: rgba(15, 23, 42, 0.85); /* dark glass */
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  color: #fff;
+  max-width: 320px;
+}
+
+/* Título */
+.driver-popover-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+/* Texto */
+.driver-popover-description {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Rodapé */
+.driver-popover-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 8px;
+}
+
+/* Botões */
+.driver-popover-next-btn,
+.driver-popover-prev-btn,
+.driver-popover-close-btn {
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+/* Próximo / Finalizar */
+.driver-popover-next-btn {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.driver-popover-next-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px var(--color-primary);
+}
+
+/* Voltar */
+.driver-popover-prev-btn {
+  background: transparent;
+  color: #fff;
+  opacity: 0.7;
+}
+
+.driver-popover-prev-btn:hover {
+  opacity: 1;
+}
+
+/* Barra de progresso */
+.driver-popover-progress-text {
+  font-size: 0.75rem;
+  opacity: 0.6;
+}

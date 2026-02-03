@@ -1,4 +1,3 @@
-import { useTheme } from "../hooks/useTheme";
 import Auth from "./Auth"
 import DefaultRoutes from "./DefaultRoutes"
 

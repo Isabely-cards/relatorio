@@ -2,15 +2,58 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --color-primary: #C4005F;
+  /* Brand */
+  --color-primary: #39061f;
+  --color-secondary: #9f1239;
+  --color-tertiary: #fda4af;
+
+  /* Backgrounds */
+  --bg-page: #050c289d;
+  --bg-card: #ffffff;
+
+  /* Text */
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+
+  /* Borders */
+  --border-color: #e5e7eb;
+
+  /* Status */
+  --success: #0c4722;
+  --warning: #f59e0b;
+  --danger: #ef4444;
 }
+
+.dark {
+  /* Brand */
+  --color-primary: #c4005f;
+  --color-secondary: #fb7185;
+  --color-tertiary: #fecdd3;
+
+  /* Backgrounds */
+  --bg-page: #050c28e8;
+  --bg-card: rgba(255, 255, 255, 0.08);
+
+  /* Text */
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+
+  /* Borders */
+  --border-color: rgba(255, 255, 255, 0.12);
+
+  /* Status */
+  --success: #4ade80;
+  --warning: #facc15;
+  --danger: #f87171;
+}
+
 @layer base {
   html {
     font-family: "Inter", sans-serif;
   }
 
   body {
-    @apply antialiased;
+    @apply antialiased overflow-x-hidden;
   }
 
   h1 {
@@ -43,7 +86,41 @@
     @apply text-black;
   }
 
-  .input-auth{
-    @apply bg-white border-gray-50 rounded p-2 focus:border-gray-50  focus:outline-2 focus:outline-offset-2 focus:outline-[var(--color-primary)]
+  .input-auth {
+    @apply bg-white border-gray-50 rounded p-2 focus:border-gray-50  focus:outline-2 focus:outline-offset-2 focus:outline-[var(--color-primary)];
+  }
+}
+
+@media print {
+  body {
+    background: #2f3c5a !important; /* fundo da dashboard */
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Remove tudo que não deve ir pro PDF */
+  button,
+  nav,
+  aside {
+    display: none !important;
+  }
+
+  /* Mantém layout fixo */
+  #dashboard-pdf {
+    width: 100%;
+    padding: 24px;
+  }
+
+  /* Evita quebra feia de cards */
+  .glass-card,
+  .dashboard-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Força cores do Tailwind */
+  * {
+    color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
   }
 }

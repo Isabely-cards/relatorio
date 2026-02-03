@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Moon, Sun, X } from "lucide-react";
 import { useTheme } from "../../hooks/useTheme";
 
@@ -9,22 +9,22 @@ interface SidebarProps {
 
 export default function Sidebar({ open, onClose }: SidebarProps) {
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
 
   const linkBase =
-    "w-full block px-3 py-2 rounded transition";
+    "group relative w-full flex items-center px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 overflow-hidden";
 
   const linkActive =
-    "bg-white/15 border-l-4 border-[var(--color-primary)]";
+    "bg-white/20 text-white shadow-inner";
 
   const linkInactive =
-    "hover:bg-white/10";
+    "text-white/80 hover:text-white hover:bg-white/10";
 
   return (
     <>
-      {/* Overlay mobile */}
       {open && (
         <div
-          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
           onClick={onClose}
         />
       )}
@@ -34,73 +34,93 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
           fixed md:static z-50
           h-screen md:h-auto
           w-64
-          bg-[#6571a1]
-          dark:bg-[#050C28]
-          backdrop-blur-xl
+          bg-[#050C28]/20 dark:bg-[#050C28]/80
+          backdrop-blur-2xl
           border-r border-white/10
           p-4
           m-0 md:m-2
           rounded-none md:rounded-2xl
           flex flex-col
-          transition-transform duration-300
+          shadow-2xl
+          transition-transform duration-500 ease-out
           ${open ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
         `}
       >
-        {/* Header mobile */}
         <div className="flex items-center justify-between mb-6 md:hidden">
-          <h2 className="text-lg font-bold text-white">SYSTEM</h2>
-          <button onClick={onClose}>
+          <h2 className="text-lg font-bold text-white tracking-wide">
+            SaleFlow
+          </h2>
+          <button
+            onClick={onClose}
+            className="p-1 rounded hover:bg-white/10 transition hover:cursor-pointer"
+          >
             <X size={20} />
           </button>
         </div>
 
-        {/* Title desktop */}
-        <h2 className="hidden md:block relative text-lg font-bold mb-6 pb-2 text-white text-center
-          after:absolute after:left-0 after:bottom-0
-          after:h-1 after:w-full
-          after:bg-gradient-to-r after:from-gray-400 after:via-white after:to-gray-400 after:rounded-full
+        <h2 className="
+          hidden md:block relative text-lg font-bold mb-6 pb-2
+          text-white text-center tracking-widest
+          after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0
+          after:h-1 after:w-20
+          after:bg-gradient-to-r after:from-transparent after:via-white after:to-transparent
+          after:rounded-full
         ">
-          SYSTEM
+          SaleFlow
         </h2>
 
         <nav className="space-y-2 flex-1">
-          <NavLink to="/" className={({ isActive }) =>
-            `${linkBase} ${isActive ? linkActive : linkInactive}`
-          }>
-            Dashboard
-          </NavLink>
+          {[
+            { to: "/", label: "Dashboard", id:"tour-dashboard" },
+            { to: "/create/sale", label: "Criar vendas", id:"tour-create-sale"},
+            { to: "/create/report", label: "Criar relatório", id:"tour-create-report" },
+            { to: "/history", label: "Histórico", id:"tour-history"},
+            // { to: "/create/sale", label: "Registrar venda" },
+          ].map((item) => (
+            <NavLink
+              key={item.to}
+              id={item.id}
+              to={item.to}
+              className={({ isActive }) =>
+                `${linkBase} ${isActive ? linkActive : linkInactive}`
+              }
+            >
+              <span
+                className={`
+                  absolute left-0 top-0 h-full w-1
+                  bg-[var(--color-primary)]
+                  transition-all duration-300
+                  ${location.pathname === item.to
+                    ? "opacity-100"
+                    : "opacity-0 group-hover:opacity-40"}
+                `}
+              />
 
-          <NavLink to="/report" className={({ isActive }) =>
-            `${linkBase} ${isActive ? linkActive : linkInactive}`
-          }>
-            Relatórios
-          </NavLink>
+              <span className="
+                absolute inset-0
+                bg-gradient-to-r from-white/10 to-transparent
+                opacity-0 group-hover:opacity-100
+                transition-opacity
+              " />
 
-          <NavLink to="/create/report" className={({ isActive }) =>
-            `${linkBase} ${isActive ? linkActive : linkInactive}`
-          }>
-            Criar relatório
-          </NavLink>
-
-          <NavLink to="/history" className={({ isActive }) =>
-            `${linkBase} ${isActive ? linkActive : linkInactive}`
-          }>
-            Histórico
-          </NavLink>
-          <NavLink to="/myAccont" className={({ isActive }) =>
-            `${linkBase} ${isActive ? linkActive : linkInactive}`
-          }>
-            Minha conta
-          </NavLink>
+              <span className="relative z-10">
+                {item.label}
+              </span>
+            </NavLink>
+          ))}
         </nav>
 
         <button
+          id="tour-theme-toggle"
           onClick={toggleTheme}
           className="
             mt-4 flex items-center justify-center gap-2
-            px-3 py-2 rounded-lg
+            px-3 py-2 rounded-xl
             bg-white/10 hover:bg-white/20
-            transition
+            active:scale-95
+            transition-all duration-300
+            shadow-inner
+            hover:cursor-pointer
           "
         >
           {theme === "dark" ? (

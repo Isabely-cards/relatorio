@@ -1,10 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import DefaultLayout from "../pages/DefaultLayout"
 import Dashboard from "../pages/Dashboard"
-import Report from "../pages/Report"
 import CreateReport from "../pages/CreateReport"
 import History from "../pages/History"
-import MyAccont from "../pages/MyAccont"
+import MyAccount from "../pages/MyAccont"
+import CreateSale from "../pages/CreateSale"
+import EditSale from "../pages/EditSale"
 
 export default function DefaultRoutes() {
     return (
@@ -12,10 +13,12 @@ export default function DefaultRoutes() {
             <Routes>
                 <Route path="/" element={<DefaultLayout />}>
                     <Route index element={<Dashboard />} />
-                    <Route path="report" element={<Report />} />
+                    {/* <Route path="report" element={<Report />} /> */}
+                    <Route path="create/sale" element={<CreateSale />} />
                     <Route path="create/report" element={<CreateReport />} />
                     <Route path="history" element={<History />} />
-                    <Route path="myAccont" element={<MyAccont />} />
+                    <Route path="sales/edit/:id" element={<EditSale />} />
+                    <Route path="myAccont" element={<MyAccount />} />
                 </Route>
 
                 {/* pagina não encontrada */}
@@ -30,11 +33,11 @@ export default function DefaultRoutes() {
                                     className="w-72 md:w-96 mb-6 drop-shadow-xl animate-float"
                                 />
 
-                                <h1 className="text-3xl font-bold text-gray-800 mb-2">
+                                <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-2">
                                     Opa! Página não encontrada
                                 </h1>
 
-                                <p className="text-gray-500 mb-6">
+                                <p className="text-[var(--text-primary)] mb-6">
                                     Parece que você tentou acessar uma rota que não existe.
                                 </p>
 

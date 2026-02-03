@@ -15,9 +15,9 @@ export function StatCard({ title, value, subtitle }: StatCardProps) {
       hover:scale-[1.02]
       transition
     ">
-      <p className="text-sm opacity-70 text-[#A3E635]">{title}</p>
+      <p className="text-sm opacity-70 text-[var(--color-secondary)]">{title}</p>
 
-      <h2 className="text-2xl font-bold mt-1 text-white">
+      <h2 className="text-2xl font-bold mt-1 text-[var(--text-primary)]">
         {value}
       </h2>
 

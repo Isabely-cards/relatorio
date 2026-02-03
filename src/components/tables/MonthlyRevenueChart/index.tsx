@@ -8,7 +8,7 @@ import {
 } from "recharts";
 
 interface Props {
-  data: { mes: string; valor: number }[];
+  data: { month: string; total: number }[];
 }
 
 export function MonthlyRevenueChart({ data }: Props) {
@@ -16,16 +16,16 @@ export function MonthlyRevenueChart({ data }: Props) {
     <ResponsiveContainer width="100%" height="100%">
       <LineChart data={data}>
         <XAxis
-          dataKey="mes"
-          tick={{ fill: "#ffffff" }}
-          axisLine={{ stroke: "#ffffff" }}
-          tickLine={{ stroke: "#ffffff" }}
+          dataKey="month"
+          tick={{ fill: "var(--text-primary)" }}
+          axisLine={{ stroke: "var(--text-primary)" }}
+          tickLine={{ stroke: "var(--text-primary)" }}
         />
 
         <YAxis
-          tick={{ fill: "#ffffff" }}
-          axisLine={{ stroke: "#ffffff" }}
-          tickLine={{ stroke: "#ffffff" }}
+          tick={{ fill: "var(--text-primary)" }}
+          axisLine={{ stroke: "var(--text-primary)" }}
+          tickLine={{ stroke: "var(--text-primary)" }}
         />
 
         <Tooltip
@@ -40,11 +40,11 @@ export function MonthlyRevenueChart({ data }: Props) {
 
         <Line
           type="monotone"
-          dataKey="valor"
-          stroke="#ffffff"
+          dataKey="total"
+          stroke="var(--text-primary)"
           strokeWidth={3}
-          dot={{ fill: "#ffffff" }}
-          activeDot={{ fill: "#ffffff", r: 6 }}
+          dot={{ fill: "var(--text-primary)" }}
+          activeDot={{ fill: "var(--text-primary)", r: 6 }}
         />
       </LineChart>
     </ResponsiveContainer>

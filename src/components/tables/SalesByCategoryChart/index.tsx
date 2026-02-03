@@ -4,12 +4,13 @@ import {
   Cell,
   Tooltip,
   ResponsiveContainer,
+  Legend,
 } from "recharts";
 
 const COLORS = ["#6366f1", "#22c55e", "#f97316", "#e11d48"];
 
 interface Props {
-  data: { categoria: string; total: number }[];
+  data: { category: string; total: number }[];
 }
 
 export function SalesByCategoryChart({ data }: Props) {
@@ -19,14 +20,22 @@ export function SalesByCategoryChart({ data }: Props) {
         <Pie
           data={data}
           dataKey="total"
-          nameKey="categoria"
-          outerRadius={90}
+          nameKey="category"
         >
           {data.map((_, index) => (
-            <Cell key={index} fill={COLORS[index % COLORS.length]} />
+            <Cell
+              key={index}
+              fill={COLORS[index % COLORS.length]}
+            />
           ))}
         </Pie>
         <Tooltip />
+        <Legend
+          layout="vertical"
+          verticalAlign="middle"
+          align="right"
+          iconType="circle"
+        />
       </PieChart>
     </ResponsiveContainer>
   );
