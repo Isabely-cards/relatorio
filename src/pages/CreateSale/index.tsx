@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSalesStore, type SaleStatus } from "../../store/salesStore";
 import { AuthInput } from "../../components/AuthInput";
 import { createSaleSchema } from "../../validators/createSaleSchema";
-import { CATEGORIES } from "../../utils/exportDashboardPDF/CATEGORIES";
+import { CATEGORIES } from "../../utils/CATEGORIES";
 
 export default function CreateSale() {
     const addSale = useSalesStore((state) => state.addSale);
@@ -53,7 +53,8 @@ export default function CreateSale() {
                         space-y-6
                         backdrop-blur-xl
                         shadow-[0_20px_50px_rgba(0,0,0,0.25)]
-                        border border-white/10
+                        dark:shadow-[0_20px_50px_rgba(0,0,0,0.25)]
+                        border border-[var(--text-secondary)]/30
                         ">
 
                         <AuthInput
@@ -69,7 +70,7 @@ export default function CreateSale() {
                         />
 
                         <div className="flex flex-col gap-1">
-                            <label className="text-sm text-white/70">
+                            <label className="text-sm text-[var(--text-secondary)]">
                                 Categoria
                             </label>
 
@@ -78,9 +79,9 @@ export default function CreateSale() {
                                 name="category"
                                 className="
                                 input-auth
-                                bg-white/10
-                                hover:bg-white/15
+                                bg-[var(--border-color)]/50
                                 focus:ring-2
+                                hover:cursor-pointer
                                 focus:ring-[var(--color-primary)]
                                 transition
                                 "
@@ -99,7 +100,7 @@ export default function CreateSale() {
                         <Field name="value">
                             {({ field, form }: any) => (
                                 <div className="flex flex-col gap-1">
-                                    <label className="text-sm text-white/70">
+                                    <label className="text-sm text-[var(--text-secondary)]">
                                         Valor
                                     </label>
 
@@ -129,7 +130,7 @@ export default function CreateSale() {
                         />
 
                         <div className="flex flex-col gap-1">
-                            <label className="text-sm text-white/70">
+                            <label className="text-sm text-[var(--text-secondary)]">
                                 Status
                             </label>
 
@@ -138,9 +139,9 @@ export default function CreateSale() {
                                 name="status"
                                 className="
                                     input-auth
-                                    bg-white/10
-                                    hover:bg-white/15
+                                    bg-[var(--border-color)]/50
                                     focus:ring-2
+                                    hover:cursor-pointer
                                     focus:ring-[var(--color-primary)]
                                     transition
                                 "
@@ -153,7 +154,7 @@ export default function CreateSale() {
 
                         </div>
 
-                        <div className="flex justify-end pt-6 border-t border-white/10">
+                        <div className="flex justify-end pt-6 border-t border-[var(--border-color)]">
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
@@ -163,6 +164,7 @@ export default function CreateSale() {
                                         text-white font-medium
                                         shadow-lg shadow-pink-500/30
                                         hover:scale-[1.03]
+                                        hover:cursor-pointer
                                         hover:shadow-pink-500/50
                                         active:scale-95
                                         transition-all

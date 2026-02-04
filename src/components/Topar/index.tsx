@@ -26,7 +26,7 @@ export default function Topbar({ onMenu }: { onMenu: () => void }) {
       <button onClick={onMenu} className="md:hidden">
         <Menu size={22} />
       </button>
-      <span className="text-sm opacity-70">
+      <span className="text-sm text-[var(--text-secondary)] dark:opacity-70">
         {pathname === '/' ? 'Dashboard': pathname === '/create/sale' ? 'Criar vendas': pathname === '/create/report' ? 'Criar Relatórios': 'Histórico'}
       </span>
 

@@ -13,7 +13,7 @@ export function AuthInput({ label, ...props }: AuthInputProps) {
   return (
     <div className="flex flex-col gap-1">
       {label && (
-        <label className="text-sm text-white/80">
+        <label className="text-sm text-[var(--text-secondary)]">
           {label}
         </label>
       )}

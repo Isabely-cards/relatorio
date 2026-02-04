@@ -55,26 +55,58 @@ export function useDashboard() {
         ).map(([category, total]) => ({ category, total }))
       : [];
 
-    const vendasPorVendedor = filters.show.vendasPorVendedor
-      ? Object.entries(
-          filteredSales.reduce<Record<string, number>>((acc, sale) => {
-            acc[sale.seller] = (acc[sale.seller] || 0) + sale.value;
-            return acc;
-          }, {})
-        ).map(([seller, total]) => ({ seller, total }))
-      : [];
+const vendasPorVendedor = filters.show.vendasPorVendedor
+  ? Object.values(
+      filteredSales.reduce<Record<string, any>>((acc, sale) => {
+        if (!acc[sale.seller]) {
+          acc[sale.seller] = {
+            seller: sale.seller,
+            totalValue: 0,
+            totalItems: 0,
+            status: {
+              Pago: 0,
+              Processando: 0,
+              Cancelado: 0,
+            },
+          };
+        }
 
-    const topProdutos = filters.show.topProdutos
-      ? Object.entries(
-          filteredSales.reduce<Record<string, number>>((acc, sale) => {
-            acc[sale.product] = (acc[sale.product] || 0) + sale.value;
-            return acc;
-          }, {})
-        )
-          .map(([product, total]) => ({ product, total }))
-          .sort((a, b) => b.total - a.total)
-          .slice(0, 5)
-      : [];
+        acc[sale.seller].totalValue += sale.value;
+        acc[sale.seller].totalItems += 1; // ✅ AQUI está o pulo do gato
+        acc[sale.seller].status[sale.status]++;
+
+        return acc;
+      }, {})
+    )
+  : [];
+
+
+
+const topProdutos = filters.show.topProdutos
+  ? Object.values(
+      filteredSales.reduce<
+        Record<
+          string,
+          { product: string; totalValue: number; totalItems: number }
+        >
+      >((acc, sale) => {
+        if (!acc[sale.product]) {
+          acc[sale.product] = {
+            product: sale.product,
+            totalValue: 0,
+            totalItems: 0,
+          };
+        }
+
+        acc[sale.product].totalValue += sale.value;
+
+        return acc;
+      }, {})
+    )
+      .sort((a, b) => b.totalValue - a.totalValue)
+      .slice(0, 5)
+  : [];
+
 
     return {
       stats: {

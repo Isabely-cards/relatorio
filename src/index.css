@@ -8,8 +8,8 @@
   --color-tertiary: #fda4af;
 
   /* Backgrounds */
-  --bg-page: #050c289d;
-  --bg-card: #ffffff;
+  --bg-page: #ffffff;
+  --bg-card: #ece4e4;
 
   /* Text */
   --text-primary: #111827;
@@ -57,11 +57,11 @@
   }
 
   h1 {
-    @apply text-3xl font-bold;
+    @apply text-3xl font-bold ;
   }
 
   h2 {
-    @apply text-2xl font-semibold;
+    @apply text-2xl font-bold text-[var(--color-primary)];
   }
 }
 
@@ -87,7 +87,7 @@
   }
 
   .input-auth {
-    @apply bg-white border-gray-50 rounded p-2 focus:border-gray-50  focus:outline-2 focus:outline-offset-2 focus:outline-[var(--color-primary)];
+    @apply bg-[var(--border-color)]/50 border-[var(--border-color)] rounded p-2 focus:border-[var(--border-color)] focus:outline-2 focus:outline-offset-2 focus:outline-[var(--color-primary)];
   }
 }
 

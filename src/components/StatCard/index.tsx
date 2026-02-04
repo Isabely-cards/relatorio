@@ -7,7 +7,7 @@ interface StatCardProps {
 export function StatCard({ title, value, subtitle }: StatCardProps) {
   return (
     <div className="
-      bg-white/10
+      bg-[var(--bg-card)]
       backdrop-blur-xl
       border border-white/10
       rounded-xl

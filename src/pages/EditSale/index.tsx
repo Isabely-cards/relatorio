@@ -3,7 +3,7 @@ import { Formik, Form, Field } from "formik";
 import { useSalesStore } from "../../store/salesStore";
 import { AuthInput } from "../../components/AuthInput";
 import { createSaleSchema } from "../../validators/createSaleSchema";
-import { CATEGORIES } from "../../utils/exportDashboardPDF/CATEGORIES";
+import { CATEGORIES } from "../../utils/CATEGORIES";
 
 export default function EditSale() {
   const { id } = useParams();
@@ -49,7 +49,7 @@ export default function EditSale() {
             Editar venda
           </h2>
 
-          <p className="text-sm text-white/70">
+          <p className="text-sm text-[var(--text-secondary)]">
             Atualize os dados da venda registrada
           </p>
         </header>
@@ -85,7 +85,7 @@ export default function EditSale() {
                 <AuthInput name="date" type="date" label="Data" />
                 <AuthInput name="product" label="Produto" />
                 <div className="flex flex-col gap-1">
-                  <label className="text-sm text-white/70">
+                  <label className="text-sm text-[var(--text-secondary)]">
                     Categoria
                   </label>
 
@@ -114,7 +114,7 @@ export default function EditSale() {
                 <Field name="value">
                   {({ field, form }: any) => (
                     <div className="flex flex-col gap-1">
-                      <label className="text-sm text-white/70">
+                      <label className="text-sm text-[var(--text-secondary)]">
                         Valor
                       </label>
 
@@ -136,7 +136,7 @@ export default function EditSale() {
                   )}
                 </Field>
                 <div className="flex flex-col gap-1">
-                <label className="text-sm text-white/70">
+                <label className="text-sm text-[var(--text-secondary)]">
                   Status
                 </label>
 
@@ -167,7 +167,7 @@ export default function EditSale() {
                     px-6 py-2 rounded-xl
                     bg-white/5
                     hover:bg-white/10
-                    text-white/80
+                    text-[var(--text-secondary)]
                     transition
                   "
                 >

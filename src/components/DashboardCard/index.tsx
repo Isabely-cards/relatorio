@@ -25,8 +25,7 @@ export function DashboardCard({
         flex flex-col
         ${height}
         rounded-2xl
-
-        bg-white/10
+        bg-[var(--bg-card)]
         backdrop-blur-xl
         border border-white/10
         shadow-lg

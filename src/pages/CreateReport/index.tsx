@@ -7,7 +7,8 @@ export default function CreateReport() {
   const setFilters = useReportStore((state) => state.setFilters);
   const filters = useReportStore((state) => state.filters);
 
-
+  // bg-gradient-to-r from-[var(--color-primary)] to-pink-400
+  // bg-clip-text text-transparent
   return (
     <section className="
       min-h-screen
@@ -20,13 +21,12 @@ export default function CreateReport() {
         <header className="space-y-1">
           <h2 className="
             text-3xl font-bold
-            bg-gradient-to-r from-[var(--color-primary)] to-pink-400
-            bg-clip-text text-transparent
+            text-[var(--color-primary)]
           ">
             Criar relatório
           </h2>
 
-          <p className="text-sm text-white/70">
+          <p className="text-sm text-[var(--text-secondary)]">
             Defina o período e quais dados deseja visualizar no dashboard
           </p>
         </header>
@@ -40,19 +40,22 @@ export default function CreateReport() {
         >
           {({ values, setFieldValue, isSubmitting }) => (
             <Form className="
-              glass-card
-              p-8
-              rounded-3xl
-              space-y-8
-              backdrop-blur-xl
-              shadow-[0_20px_50px_rgba(0,0,0,0.25)]
-              border border-white/10
+                  glass-card
+                  p-8
+                  rounded-3xl
+                  space-y-8
+                  bg-white/60
+                  backdrop-blur-xl
+                  backdrop-brightness-110
+                  shadow-[0_20px_50px_rgba(0,0,0,0.25)]
+                  border border-[var(--text-secondary)]/30
+
             ">
 
               {/* Datas */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-1">
-                  <label className="text-sm text-white/70">
+                  <label className="text-sm text-[var(--text-secondary)]">
                     Data inicial
                   </label>
                   <input
@@ -66,7 +69,7 @@ export default function CreateReport() {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <label className="text-sm text-white/70">
+                  <label className="text-sm text-[var(--text-secondary)]">
                     Data final
                   </label>
                   <input
@@ -82,7 +85,7 @@ export default function CreateReport() {
 
               {/* Checkboxes */}
               <div className="space-y-4">
-                <h4 className="text-sm font-medium text-white/80">
+                <h4 className="text-sm font-medium text-[var(--text-secondary)]">
                   Dados do relatório
                 </h4>
 
@@ -98,8 +101,10 @@ export default function CreateReport() {
                       className="
                         flex items-center gap-3
                         p-4 rounded-xl
-                        bg-white/5
-                        hover:bg-white/10
+                        bg-[var(--bg-card)]
+                        dark:bg-white/5
+                        hover:bg-[#b4b4b4]
+                        hover:dark:bg-white/10
                         transition
                         cursor-pointer
                       "
@@ -119,7 +124,7 @@ export default function CreateReport() {
                         "
                       />
 
-                      <span className="text-sm text-white/80">
+                      <span className="text-sm text-[var(--text-secondary)]">
                         {item.label}
                       </span>
                     </label>
@@ -128,7 +133,7 @@ export default function CreateReport() {
               </div>
 
               {/* Botão */}
-              <div className="flex justify-end pt-6 border-t border-white/10">
+              <div className="flex justify-end pt-6 border-t border-[var(--border-color)]">
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -136,9 +141,11 @@ export default function CreateReport() {
                     px-8 py-3 rounded-2xl
                     bg-[var(--color-primary)]
                     text-white font-medium
-                    shadow-lg shadow-pink-500/30
+                    shadow-lg shadow-pink-500
+                    dark:shadow-pink-500/30
                     hover:scale-[1.03]
                     hover:shadow-pink-500/50
+                    hover:cursor-pointer
                     active:scale-95
                     transition-all
                     disabled:opacity-50

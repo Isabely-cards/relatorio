@@ -12,13 +12,13 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
   const location = useLocation();
 
   const linkBase =
-    "group relative w-full flex items-center px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 overflow-hidden";
+    "group text-[var(--color-primary)] relative w-full flex items-center px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 overflow-hidden";
 
   const linkActive =
-    "bg-white/20 text-white shadow-inner";
+    "bg-white/50 dark:bg-white/20 text-white shadow-inner";
 
   const linkInactive =
-    "text-white/80 hover:text-white hover:bg-white/10";
+    "text-[var(--text-secondary)] hover:text-white hover:bg-white/30 hover:dark:bg-white/10";
 
   return (
     <>
@@ -47,7 +47,7 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         `}
       >
         <div className="flex items-center justify-between mb-6 md:hidden">
-          <h2 className="text-lg font-bold text-white tracking-wide">
+          <h2 className="text-lg font-bold text-[var(--color-primary)] dark:text-white tracking-wide">
             SaleFlow
           </h2>
           <button
@@ -60,10 +60,11 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
 
         <h2 className="
           hidden md:block relative text-lg font-bold mb-6 pb-2
-          text-white text-center tracking-widest
+          text-[var(--color-primary)] dark:text-white text-center tracking-widest
           after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0
           after:h-1 after:w-20
           after:bg-gradient-to-r after:from-transparent after:via-white after:to-transparent
+          
           after:rounded-full
         ">
           SaleFlow
@@ -89,6 +90,7 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
                 className={`
                   absolute left-0 top-0 h-full w-1
                   bg-[var(--color-primary)]
+                  text-[var(--color-primary)]
                   transition-all duration-300
                   ${location.pathname === item.to
                     ? "opacity-100"
@@ -103,7 +105,7 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
                 transition-opacity
               " />
 
-              <span className="relative z-10">
+              <span className="relative z-10 text-[var(--color-primary)] dark:text-white font-semibold">
                 {item.label}
               </span>
             </NavLink>
@@ -116,8 +118,9 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
           className="
             mt-4 flex items-center justify-center gap-2
             px-3 py-2 rounded-xl
-            bg-white/10 hover:bg-white/20
+            bg-[var(--bg-card)] hover:bg-[var(--bg-card)]/50
             active:scale-95
+            text-[var(--text-primary)]
             transition-all duration-300
             shadow-inner
             hover:cursor-pointer

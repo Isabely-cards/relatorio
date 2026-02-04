@@ -10,19 +10,19 @@ export default function History() {
       {/* Header */}
       <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-[var(--color-primary)] to-pink-800 dark:to-pink-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold text-[var(--color-primary)]">
             Histórico de Vendas
           </h2>
-          <p className="text-sm text-white/70">
+          <p className="text-sm text-[var(--text-secondary)]">
             Visualize, edite e acompanhe todas as vendas registradas
           </p>
         </div>
       </header>
 
       {/* Conteúdo */}
-      <div className="glass-card rounded-3xl border border-white/10 shadow-xl w-full">
+      <div className="glass-card rounded-3xl border border-[var(--border-color)] dark:border-white/10 shadow-xl w-full">
         {sales.length === 0 ? (
-          <div className="text-center py-16 text-white/50">
+          <div className="text-center py-16 text-[var(--text-secondary)]">
             Nenhuma venda cadastrada ainda
           </div>
         ) : (
@@ -32,20 +32,20 @@ export default function History() {
               {sales.map((sale) => (
                 <div
                   key={sale.id}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-4 space-y-3"
+                  className="rounded-2xl border border-[var(--border-color)] bg-[var(--border-color)] p-4 space-y-3"
                 >
                   <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="font-semibold text-white">
+                      <h3 className="font-semibold text-[var(--text-primary)]">
                         {sale.product}
                       </h3>
-                      <span className="text-xs text-white/60">
+                      <span className="text-xs text-[var(--text-secondary)]">
                         {sale.seller} <br/>
                         {new Date(sale.date).toLocaleDateString("pt-BR")}
                       </span>
                     </div>
 
-                    <span className="font-semibold text-white">
+                    <span className="font-semibold text-[var(--text-primary)]">
                       R$ {sale.value.toFixed(2)}
                     </span>
                   </div>
@@ -67,7 +67,7 @@ export default function History() {
 
                     <button
                       onClick={() => navigate(`/sales/edit/${sale.id}`)}
-                      className="text-xs font-medium text-[var(--color-primary)] hover:underline"
+                      className="text-xs font-medium text-[var(--color-primary)] hover:underline hover:cursor-pointer"
                     >
                       Editar
                     </button>
@@ -80,7 +80,7 @@ export default function History() {
             <div className="hidden md:block overflow-x-auto">
               <table className="w-full text-sm min-w-[700px]">
                 <thead>
-                  <tr className="text-left text-[var(--color-secondary)] border-b border-white/10">
+                  <tr className="text-left text-[var(--color-secondary)] border-b border-[var(--border-color)]">
                     <th className="py-4 px-4">Data</th>
                     <th className="px-4">Produto</th>
                     <th className="px-4">Categoria</th>
@@ -95,7 +95,7 @@ export default function History() {
                   {sales.map((sale) => (
                     <tr
                       key={sale.id}
-                      className="border-b border-white/5 hover:bg-white/5 transition"
+                      className="border-b border-[var(--border-color)] hover:bg-[var(--border-color)]/50 transition text-[var(--text-primary)]"
                     >
                       <td className="py-3 px-4 whitespace-nowrap">
                         {new Date(sale.date).toLocaleDateString("pt-BR")}
@@ -130,7 +130,7 @@ export default function History() {
                           onClick={() =>
                             navigate(`/sales/edit/${sale.id}`)
                           }
-                          className="px-3 py-1.5 rounded-lg text-xs font-medium bg-white/5 hover:bg-white/10 transition"
+                          className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--border-color)] hover:[var(--border-color)]/30 transition hover:cursor-pointer"
                         >
                           Editar
                         </button>
