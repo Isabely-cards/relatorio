@@ -41,14 +41,15 @@ export default function CreateReport() {
           {({ values, setFieldValue, isSubmitting }) => (
             <Form className="
                   glass-card
-                  p-8
-                  rounded-3xl
-                  space-y-8
-                  bg-white/60
-                  backdrop-blur-xl
-                  backdrop-brightness-110
-                  shadow-[0_20px_50px_rgba(0,0,0,0.25)]
-                  border border-[var(--text-secondary)]/30
+                        p-4
+                        sm:p-6
+                        md:p-8
+                        rounded-3xl
+                        space-y-6
+                        backdrop-blur-xl
+                        shadow-[0_20px_50px_rgba(0,0,0,0.25)]
+                        dark:shadow-[0_20px_50px_rgba(0,0,0,0.25)]
+                        border border-[var(--text-secondary)]/30
 
             ">
 
